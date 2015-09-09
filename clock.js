@@ -7,6 +7,10 @@ var startStopClock = document.getElementById("startStopClock");
 
 startStopClock.onclick = startStopClockHandler;
 
+var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+var hours = ["12","1","2","3","4","5","6","7","8","9","10","11","12","1","2","3","4","5","6","7","8","9","10","11"];
+
 function startStopClockHandler() {
     if (!clockIntervalRunning) {
         clockInterval = setInterval(updateClock, 100);
@@ -22,7 +26,7 @@ function startStopClockHandler() {
 
 var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-var hours = ["12","1","2","3","4","5","6","7","8","9","10","11","12","1","2","3","4","5","6","7","8","9","10","11"]
+var hours = ["12","1","2","3","4","5","6","7","8","9","10","11","12","1","2","3","4","5","6","7","8","9","10","11"];
 
 function updateClock() {
     var d = new Date();
@@ -40,7 +44,7 @@ function updateClock() {
     var seconds = getTwoDigit(d.getSeconds());
     var tenthsOfSecond = getTenthsOfSecond(d.getMilliseconds());
     var period = getPeriod(d.getHours());
-    
+    console.log(hour);
     var currentTime = hour + ":" + minutes + ":" + seconds + "." + tenthsOfSecond + " " + period;
     timeParagraph.innerHTML = "It is currently " + currentTime;
 }

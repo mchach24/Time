@@ -1,15 +1,15 @@
 var timer;
 var timerInterval;
 var timerRunning = false;
-var hours;
+var tHours;
 var minutes;
 var seconds;
 
 var timerParagraph = document.getElementById("timerParagraph");
 var strong = document.getElementsByClassName("strong");
 var timerHours = document.getElementById("timerHours");
-var timerMinutes = document.getElementById("timerMinutes");
-var timerSeconds = document.getElementById("timerSeconds");
+var timertMinutes = document.getElementById("timerMinutes");
+var timertSeconds = document.getElementById("timerSeconds");
 var startStopTimerBtn = document.getElementById("startStopTimer");
 var resetTimerBtn = document.getElementById("resetTimer");
 var strong = document.getElementsByClassName("strong");
@@ -74,10 +74,10 @@ function resetTimer() {
 }
 
 function calculateTimer() {
-    hours = parseInt(timerHours.value);
-    minutes = parseInt(timerMinutes.value);
-    seconds = parseInt(timerSeconds.value);
-    timer = (hours * 3600) + (minutes * 60) + seconds;
+    tHours = parseInt(timerHours.value);
+    tMinutes = parseInt(timerMinutes.value);
+    tSeconds = parseInt(timerSeconds.value);
+    timer = (tHours * 3600) + (tMinutes * 60) + tSeconds;
     timerParagraph.innerHTML = "0:00:00"
 }
 
