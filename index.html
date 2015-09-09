@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Clock, Stopwatch, and Timer</title>
+    
+    <link href="style.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container" id="clock">
+        <h2>Clock</h2>
+        <p id="date">Click Start to know today's date!</p>
+        <p id="time">Click Start to know the current time!</p>
+        <button id="startStopClock">Start Clock</button>
+    </div>
+    
+    <div class="container" id="stopwatch">
+        <h2>Stopwatch</h2>
+        <p id="counterParagraph">0:00:00.0</p>
+        <button id="startStopWatch">Start Stopwatch</button>
+        <button id="resetStopwatch">Reset Stopwatch</button>
+    </div>
+    
+    <div class="container" id="timer">
+        <h2>Timer</h2>
+        <p id="timerParagraph">00:00</p>
+        <strong>Minutes:</strong>
+        <input id="timerMinutes" type="number" min="0" max="59" value="01">
+        <strong>Seconds:</strong>
+        <input id="timerSeconds" type="number" min="0" max="59" value="00">
+        <button id="startStopTimer">Start Timer</button>
+        <button id="resetTimer">Reset Timer</button>
+    </div>
+    
+    <script src="clock.js"></script>
+    <script src="stopwatch.js"></script>
+    <script src="timer.js"></script>
+</body>
+</html>

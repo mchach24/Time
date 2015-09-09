@@ -1,0 +1,26 @@
+ body {
+    background-color: #E0E0E0;
+}
+
+.container {
+    background-color: #BDBDBD;
+    margin: auto;
+    width: 60%;
+    border: 3px solid #212121; /*#8AC007; */
+    padding: 10px;
+    text-align: center;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    font-family: arial;
+}
+
+p {
+    height: auto;
+    width: auto;
+    font-family: arial;
+    font-size: 1.5em;
+}
+    
+input {
+    width: 35px;
+}
