@@ -22,10 +22,12 @@
     
     <div class="container" id="timer">
         <h2>Timer</h2>
-        <p id="timerParagraph">00:00</p>
-        <strong>Minutes:</strong>
+        <p id="timerParagraph">0:00:00</p>
+        <strong class="strong">Hours:</strong>
+        <input id="timerHours" type="number" min="0" max="23" value ="0">
+        <strong class="strong">Minutes:</strong>
         <input id="timerMinutes" type="number" min="0" max="59" value="01">
-        <strong>Seconds:</strong>
+        <strong class="strong">Seconds:</strong>
         <input id="timerSeconds" type="number" min="0" max="59" value="00">
         <button id="startStopTimer">Start Timer</button>
         <button id="resetTimer">Reset Timer</button>

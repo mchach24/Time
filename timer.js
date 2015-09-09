@@ -1,17 +1,23 @@
 var timer;
 var timerInterval;
 var timerRunning = false;
+var hours;
 var minutes;
 var seconds;
 
 var timerParagraph = document.getElementById("timerParagraph");
+var strong = document.getElementsByClassName("strong");
+var timerHours = document.getElementById("timerHours");
 var timerMinutes = document.getElementById("timerMinutes");
 var timerSeconds = document.getElementById("timerSeconds");
 var startStopTimerBtn = document.getElementById("startStopTimer");
 var resetTimerBtn = document.getElementById("resetTimer");
+var strong = document.getElementsByClassName("strong");
+var strongArray = [].slice.call(strong);
 
 calculateTimer();
 
+timerHours.onchange = textChangeHandler;
 timerMinutes.onchange = textChangeHandler; 
 timerSeconds.onchange = textChangeHandler;
 
@@ -25,7 +31,12 @@ function textChangeHandler(event) {
         event.target.value = "59";
     }
     else if (inputValue < 10) {
+        if (event.target.id == "timerHours") {
+            event.target.value = inputValue;
+        }
+        else {
         event.target.value = "0" + inputValue;
+        }
     }  
     calculateTimer();
 }
@@ -35,6 +46,12 @@ function timerHandler() {
         timerInterval = setInterval(updateTimer, 1000);
         startStopTimerBtn.innerHTML = "Pause Timer";
         timerRunning = true;
+        timerHours.style.display = "none";
+        timerMinutes.style.display = "none";
+        timerSeconds.style.display = "none";
+        for (i = 0; i < strongArray.length; i++) {
+            strongArray[i].style.display = "none";
+        }
     }
     else {
         clearInterval(timerInterval);
@@ -47,28 +64,41 @@ function resetTimer() {
     clearInterval(timerInterval);
     startStopTimerBtn.innerHTML = "Start Timer";
     timerRunning = false;
+    timerHours.style.display = "initial";
+    timerMinutes.style.display = "initial";
+    timerSeconds.style.display = "initial";
+    for (i = 0; i < strongArray.length; i++) {
+            strongArray[i].style.display = "initial";
+    }
     calculateTimer();
 }
 
 function calculateTimer() {
+    hours = parseInt(timerHours.value);
     minutes = parseInt(timerMinutes.value);
     seconds = parseInt(timerSeconds.value);
-    console.log(minutes + ":" + seconds);
-    timer = (minutes * 60) + seconds;
-    timerParagraph.innerHTML = "00:00"
+    timer = (hours * 3600) + (minutes * 60) + seconds;
+    timerParagraph.innerHTML = "0:00:00"
 }
 
 function updateTimer() {
-    var formattedMinutes = formatMinutes(timer);
-    var formattedSeconds = formatSeconds(timer);
-    console.log(timer);
+    var seconds = timer;
+    var formattedHours = formatHours(seconds);
+    seconds = seconds - (formattedHours * 3600);
+    var formattedMinutes = formatMinutes(seconds);
+    var formattedSeconds = formatSeconds(seconds);
     if (timer <= 0) {
         timerParagraph.innerHTML = "Time's up!";
         resetTimer();
         return;
     }
-    timerParagraph.innerHTML = formattedMinutes + ":" + formattedSeconds;
+    timerParagraph.innerHTML = formattedHours + ":" + formattedMinutes + ":" + formattedSeconds;
     timer--;
+}
+
+function formatHours(seconds) {
+    var evenHours = Math.floor(seconds / 3600);
+    return evenHours;
 }
 
 function formatMinutes(seconds) {
